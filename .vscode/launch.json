@@ -7,22 +7,19 @@
         {
             "name": "Fit-Daily",
             "request": "launch",
-            "type": "dart",
-            "program": "lib/main_development.dart"
+            "type": "dart"
         },
         {
             "name": "Fit-Daily (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile",
-            "program": "lib/main_staging.dart"
+            "flutterMode": "profile"
         },
         {
             "name": "Fit-Daily (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release",
-            "program": "lib/main_production.dart"
+            "flutterMode": "release"
         }
     ]
 }
