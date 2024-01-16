@@ -14,5 +14,26 @@ abstract class _$AppRouter extends RootStackRouter {
   _$AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, PageFactory> pagesMap = {};
+  final Map<String, PageFactory> pagesMap = {
+    AIChatRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AIChatScreen(),
+      );
+    }
+  };
+}
+
+/// generated route for
+/// [AIChatScreen]
+class AIChatRoute extends PageRouteInfo<void> {
+  const AIChatRoute({List<PageRouteInfo>? children})
+      : super(
+          AIChatRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AIChatRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
