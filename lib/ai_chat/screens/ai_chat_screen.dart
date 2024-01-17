@@ -7,6 +7,21 @@ class AIChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Fit Daily'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              AutoRouter.of(context).pop();
+            },
+            icon: const Icon(Icons.close),
+          ),
+        ],
+      ),
+      body: const Center(
+        child: Text('AI Chat Screen'),
+      ),
+    );
   }
 }

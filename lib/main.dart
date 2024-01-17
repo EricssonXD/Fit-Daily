@@ -1,3 +1,5 @@
+import 'package:fit_daily/util/router/router_debug.dart';
+import 'package:fit_daily/util/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:fit_daily/util/router/router.dart';
 
@@ -14,11 +16,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Fit Daily',
-      theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      theme: MyTheme.lightTheme,
+      routerConfig: _appRouter.config(
+        navigatorObservers: () => [
+          MyObserver(),
+        ],
       ),
-      routerConfig: _appRouter.config(),
     );
   }
 }
