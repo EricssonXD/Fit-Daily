@@ -2,6 +2,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fit_daily/util/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+part 'daily_goals.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -40,6 +43,7 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    _DailyTasksComponent(),
                   ],
                 ),
               ],

@@ -4,10 +4,12 @@ var dio = Dio();
 
 class AIChatAPI {
   // API URL of openai
+  // ignore: constant_identifier_names
   static const String API_URL =
       'https://api.openai.com/v1/engines/davinci/completions';
 
   // API Key of openai
+  // ignore: constant_identifier_names
   static const String API_KEY = 'my api key';
 
   // Function to get response from openai

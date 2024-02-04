@@ -10,6 +10,7 @@ abstract class MyTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
     ),
+    // scaffoldBackgroundColor: _lightColorScheme.primary,
   );
 
   static ThemeData darkTheme = ThemeData(

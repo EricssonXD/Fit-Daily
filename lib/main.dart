@@ -22,6 +22,7 @@ class App extends StatelessWidget {
           MyObserver(),
         ],
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

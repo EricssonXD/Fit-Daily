@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 
-import 'package:fit_daily/ai_chat/screens/ai_chat_screen.dart';
-import 'package:fit_daily/home/screens/home_screen.dart';
+import 'package:fit_daily/features/ai_chat/screens/ai_chat_screen.dart';
+import 'package:fit_daily/features/home/screens/home_screen.dart';
 
 part 'router.gr.dart';
 
