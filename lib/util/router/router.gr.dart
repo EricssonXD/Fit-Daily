@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
+    ScaffoldShellRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ScaffoldShellScreen(),
+      );
+    },
   };
 }
 
@@ -54,6 +60,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ScaffoldShellScreen]
+class ScaffoldShellRoute extends PageRouteInfo<void> {
+  const ScaffoldShellRoute({List<PageRouteInfo>? children})
+      : super(
+          ScaffoldShellRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ScaffoldShellRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
             IconButton(
               onPressed: () {
                 // Navigate to AIChat Screen
-                AutoRouter.of(context).push(const AIChatRoute());
+                AutoRouter.of(context).navigate(const AIChatRoute());
               },
               icon: const Icon(Icons.chat),
             ),

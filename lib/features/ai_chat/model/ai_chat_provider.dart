@@ -6,9 +6,16 @@ part 'ai_chat_provider.freezed.dart';
 
 @riverpod
 class AIChatManager extends _$AIChatManager {
+  void sendMessage({String? message}) {
+    if (message != null) {
+      state.add(AIChatMessage(message: message, isUser: true));
+      ref.notifyListeners();
+    }
+  }
+
   @override
   List<AIChatMessage> build() {
-    return _mockMessages;
+    return [..._mockMessages];
   }
 }
 

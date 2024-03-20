@@ -7,6 +7,7 @@ abstract class MyTheme {
     brightness: Brightness.light,
     colorScheme: _lightColorScheme,
     useMaterial3: true,
+    // colorSchemeSeed: Colors.orange,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
     ),
