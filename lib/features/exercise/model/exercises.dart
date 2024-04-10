@@ -6,7 +6,6 @@ part 'exercises.freezed.dart';
 part 'exercises.g.dart';
 
 @freezed
-// @Collection(ignore: {'copyWith'})
 @Collection()
 class Exercise with _$Exercise {
   const factory Exercise({

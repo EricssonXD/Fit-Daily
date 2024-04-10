@@ -827,7 +827,7 @@ extension AIChatMessageQueryProperty3<R1, R2>
 // RiverpodGenerator
 // **************************************************************************
 
-String _$aIChatManagerHash() => r'e46ee15c350482ae4dbef36d8e0580e1a1ebf6f1';
+String _$aIChatManagerHash() => r'1f676f87f4e832995567016683de991104ec9a73';
 
 /// See also [AIChatManager].
 @ProviderFor(AIChatManager)

@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Fit-Daily",
+            "name": "senior_active_adventure",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "Fit-Daily (profile mode)",
+            "name": "senior_active_adventure (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "Fit-Daily (release mode)",
+            "name": "senior_active_adventure (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

@@ -8,11 +8,11 @@ part 'ai_chat_provider.freezed.dart';
 
 @riverpod
 class AIChatManager extends _$AIChatManager {
-  late final Isar isar;
-  late final Stream<List<AIChatMessage>> _watchStream;
+  late final Isar _isar;
+  // late final Stream<List<AIChatMessage>> _watchStream;
 
   void _init() {
-    isar = IsarManager.isar;
+    _isar = IsarManager.isar;
     // final query = isar.aIChatMessages.where().sortByTimeDesc();
     // _watchStream = query.watch(limit: 30);
 
@@ -25,12 +25,12 @@ class AIChatManager extends _$AIChatManager {
   void sendMessage({String? message}) {
     if (message != null) {
       final chatMessage = AIChatMessage(
-        id: isar.aIChatMessages.autoIncrement(),
+        id: _isar.aIChatMessages.autoIncrement(),
         message: message,
         isUser: true,
         time: DateTime.now(),
       );
-      isar.write((isar) => isar.aIChatMessages.put(chatMessage));
+      _isar.write((isar) => isar.aIChatMessages.put(chatMessage));
       state.add(chatMessage);
       ref.notifyListeners();
     }
@@ -39,13 +39,13 @@ class AIChatManager extends _$AIChatManager {
   void replyMessage({String? message}) {
     if (message != null) {
       final chatMessage = AIChatMessage(
-        id: isar.aIChatMessages.autoIncrement(),
+        id: _isar.aIChatMessages.autoIncrement(),
         message: message,
         isUser: true,
         time: DateTime.now(),
       );
 
-      isar.write((isar) => isar.aIChatMessages.put(chatMessage));
+      _isar.write((isar) => isar.aIChatMessages.put(chatMessage));
       // ref.notifyListeners();
     }
   }
@@ -53,7 +53,7 @@ class AIChatManager extends _$AIChatManager {
   @override
   List<AIChatMessage> build() {
     _init();
-    return isar.aIChatMessages
+    return _isar.aIChatMessages
         .where()
         .sortByTimeDesc()
         .findAll(limit: 30)
