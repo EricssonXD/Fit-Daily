@@ -1,6 +1,5 @@
 // Home Screen Widget
 import 'package:auto_route/auto_route.dart';
-import 'package:fit_daily/util/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -15,17 +14,7 @@ class HomeScreen extends StatelessWidget {
     // Home Screen UI
     return Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {
-                // Navigate to AIChat Screen
-                AutoRouter.of(context).navigate(const AIChatRoute());
-              },
-              icon: const Icon(Icons.chat),
-            ),
-          ],
-        ),
+
         // A column widget that contains the widgets for a fitness app home screen
         body: Column(
           children: [

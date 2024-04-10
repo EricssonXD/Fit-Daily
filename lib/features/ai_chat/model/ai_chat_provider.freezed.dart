@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AIChatMessage {
   String get message => throw _privateConstructorUsedError;
   bool get isUser => throw _privateConstructorUsedError;
+  DateTime get time => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AIChatMessageCopyWith<AIChatMessage> get copyWith =>
@@ -30,7 +32,7 @@ abstract class $AIChatMessageCopyWith<$Res> {
           AIChatMessage value, $Res Function(AIChatMessage) then) =
       _$AIChatMessageCopyWithImpl<$Res, AIChatMessage>;
   @useResult
-  $Res call({String message, bool isUser});
+  $Res call({String message, bool isUser, DateTime time, int id});
 }
 
 /// @nodoc
@@ -48,6 +50,8 @@ class _$AIChatMessageCopyWithImpl<$Res, $Val extends AIChatMessage>
   $Res call({
     Object? message = null,
     Object? isUser = null,
+    Object? time = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       message: null == message
@@ -58,6 +62,14 @@ class _$AIChatMessageCopyWithImpl<$Res, $Val extends AIChatMessage>
           ? _value.isUser
           : isUser // ignore: cast_nullable_to_non_nullable
               as bool,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -70,7 +82,7 @@ abstract class _$$AIChatMessageImplCopyWith<$Res>
       __$$AIChatMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, bool isUser});
+  $Res call({String message, bool isUser, DateTime time, int id});
 }
 
 /// @nodoc
@@ -86,6 +98,8 @@ class __$$AIChatMessageImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
     Object? isUser = null,
+    Object? time = null,
+    Object? id = null,
   }) {
     return _then(_$AIChatMessageImpl(
       message: null == message
@@ -96,23 +110,41 @@ class __$$AIChatMessageImplCopyWithImpl<$Res>
           ? _value.isUser
           : isUser // ignore: cast_nullable_to_non_nullable
               as bool,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AIChatMessageImpl implements _AIChatMessage {
-  const _$AIChatMessageImpl({required this.message, required this.isUser});
+class _$AIChatMessageImpl extends _AIChatMessage {
+  const _$AIChatMessageImpl(
+      {required this.message,
+      this.isUser = true,
+      required this.time,
+      required this.id})
+      : super._();
 
   @override
   final String message;
   @override
+  @JsonKey()
   final bool isUser;
+  @override
+  final DateTime time;
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'AIChatMessage(message: $message, isUser: $isUser)';
+    return 'AIChatMessage(message: $message, isUser: $isUser, time: $time, id: $id)';
   }
 
   @override
@@ -121,11 +153,13 @@ class _$AIChatMessageImpl implements _AIChatMessage {
         (other.runtimeType == runtimeType &&
             other is _$AIChatMessageImpl &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.isUser, isUser) || other.isUser == isUser));
+            (identical(other.isUser, isUser) || other.isUser == isUser) &&
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message, isUser);
+  int get hashCode => Object.hash(runtimeType, message, isUser, time, id);
 
   @JsonKey(ignore: true)
   @override
@@ -134,15 +168,22 @@ class _$AIChatMessageImpl implements _AIChatMessage {
       __$$AIChatMessageImplCopyWithImpl<_$AIChatMessageImpl>(this, _$identity);
 }
 
-abstract class _AIChatMessage implements AIChatMessage {
+abstract class _AIChatMessage extends AIChatMessage {
   const factory _AIChatMessage(
       {required final String message,
-      required final bool isUser}) = _$AIChatMessageImpl;
+      final bool isUser,
+      required final DateTime time,
+      required final int id}) = _$AIChatMessageImpl;
+  const _AIChatMessage._() : super._();
 
   @override
   String get message;
   @override
   bool get isUser;
+  @override
+  DateTime get time;
+  @override
+  int get id;
   @override
   @JsonKey(ignore: true)
   _$$AIChatMessageImplCopyWith<_$AIChatMessageImpl> get copyWith =>

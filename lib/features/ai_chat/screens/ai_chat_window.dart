@@ -1,12 +1,22 @@
 part of 'ai_chat_screen.dart';
 
-class _AIChatWindow extends ConsumerWidget {
+class _AIChatWindow extends HookConsumerWidget {
   const _AIChatWindow();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final scrollController = useScrollController();
+
     final messages = ref.watch(aIChatManagerProvider);
+
+    // Make the list view always scroll to the bottom
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      scrollController.animateTo(scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+    });
+
     return ListView.builder(
+      controller: scrollController,
       itemCount: messages.length,
       itemBuilder: (context, index) {
         return _AIChatBubble(message: messages[index]);
