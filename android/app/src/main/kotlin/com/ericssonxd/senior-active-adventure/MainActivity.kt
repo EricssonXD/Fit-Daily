@@ -1,4 +1,4 @@
-package com.ericssonxd.senior-active-adventure
+package com.ericssonxd.senior_active_adventure
 
 import io.flutter.embedding.android.FlutterActivity
 
