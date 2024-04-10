@@ -1,4 +1,4 @@
-name: fit_daily
+name: senior_active_adventure
 description: Action Based Fitness Game for Elderly
 
 publish_to: 'none' 
@@ -25,8 +25,7 @@ dependencies:
   isar_flutter_libs: ^4.0.0-dev.14
   path_provider: ^2.1.2
   flutter_svg: ^2.0.10+1
-  path_provider: ^2.0.15
-  fl_chart: ^0.67.0
+  fl_chart: ^0.65.0
   percent_indicator: ^4.2.3
   auto_size_text: ^3.0.0
   flex_color_scheme: ^7.3.1
@@ -43,6 +42,7 @@ dev_dependencies:
   freezed: ^2.4.6
   json_serializable: ^6.7.1
   auto_route_generator: ^7.3.2
+  change_app_package_name: ^1.1.0
 
 # dependency_overrides:
 #   analyzer: ^4.0.0

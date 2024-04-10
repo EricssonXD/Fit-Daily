@@ -1,4 +1,4 @@
-package com.example.fit_daily
+package com.ericssonxd.senior-active-adventure
 
 import io.flutter.embedding.android.FlutterActivity
 

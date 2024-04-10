@@ -1,4 +1,4 @@
-# fit_daily
+# senior_active_adventure
 
 A new Flutter project.
 

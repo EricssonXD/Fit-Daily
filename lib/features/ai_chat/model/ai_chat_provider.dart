@@ -1,4 +1,4 @@
-import 'package:fit_daily/util/isar/isar_manager.dart';
+import 'package:senior_active_adventure/util/isar/isar_manager.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:isar/isar.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

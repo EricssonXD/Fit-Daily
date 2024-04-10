@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 
-import 'package:fit_daily/features/ai_chat/screens/ai_chat_screen.dart';
-import 'package:fit_daily/features/home/screens/home_screen.dart';
-import 'package:fit_daily/features/leaderboard/screens/leaderboard_screen.dart';
-import 'package:fit_daily/features/scaffold_shell/scaffold_shell.dart';
+import 'package:senior_active_adventure/features/ai_chat/screens/ai_chat_screen.dart';
+import 'package:senior_active_adventure/features/home/screens/home_screen.dart';
+import 'package:senior_active_adventure/features/leaderboard/screens/leaderboard_screen.dart';
+import 'package:senior_active_adventure/features/scaffold_shell/scaffold_shell.dart';
 
 part 'router.gr.dart';
 

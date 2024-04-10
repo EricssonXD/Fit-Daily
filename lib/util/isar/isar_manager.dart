@@ -1,4 +1,4 @@
-import 'package:fit_daily/features/ai_chat/model/ai_chat_provider.dart';
+import 'package:senior_active_adventure/features/ai_chat/model/ai_chat_provider.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 

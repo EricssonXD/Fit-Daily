@@ -1,8 +1,8 @@
-import 'package:fit_daily/util/isar/isar_manager.dart';
-import 'package:fit_daily/util/router/router_debug.dart';
-import 'package:fit_daily/util/theme/theme.dart';
+import 'package:senior_active_adventure/util/isar/isar_manager.dart';
+import 'package:senior_active_adventure/util/router/router_debug.dart';
+import 'package:senior_active_adventure/util/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:fit_daily/util/router/router.dart';
+import 'package:senior_active_adventure/util/router/router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {

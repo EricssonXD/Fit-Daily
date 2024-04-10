@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "fit_daily" "\0"
+            VALUE "FileDescription", "senior_active_adventure" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "fit_daily" "\0"
+            VALUE "InternalName", "senior_active_adventure" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "fit_daily.exe" "\0"
-            VALUE "ProductName", "fit_daily" "\0"
+            VALUE "OriginalFilename", "senior_active_adventure.exe" "\0"
+            VALUE "ProductName", "senior_active_adventure" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

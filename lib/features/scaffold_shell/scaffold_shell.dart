@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fit_daily/util/router/router.dart';
+import 'package:senior_active_adventure/util/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
