@@ -6,6 +6,8 @@ import 'package:senior_active_adventure/util/router/router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   IsarManager.init();
   runApp(const ProviderScope(child: App()));
 }
@@ -18,7 +20,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Fit Daily',
+      title: 'Senior Active Adventure',
       theme: MyTheme.lightTheme,
       routerConfig: _appRouter.config(
         navigatorObservers: () => [
