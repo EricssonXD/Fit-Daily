@@ -21,20 +21,105 @@ class ScaffoldShellScreen extends ConsumerWidget {
     ];
   }
 
+  String intToMonthString(int month) {
+    switch (month) {
+      case DateTime.january:
+        return "January";
+      case DateTime.february:
+        return "February";
+      case DateTime.march:
+        return "March";
+      case DateTime.april:
+        return "April";
+      case DateTime.may:
+        return "May";
+      case DateTime.june:
+        return "June";
+      case DateTime.july:
+        return "July";
+      case DateTime.august:
+        return "August";
+      case DateTime.september:
+        return "September";
+      case DateTime.october:
+        return "October";
+      case DateTime.november:
+        return "November";
+      case DateTime.december:
+        return "December";
+      default:
+        return "Unknown";
+    }
+  }
+
+  String intToWeekdayString(int weekday) {
+    switch (weekday) {
+      case DateTime.sunday:
+        return "Sunday";
+      case DateTime.monday:
+        return "Monday";
+      case DateTime.tuesday:
+        return "Tuesday";
+      case DateTime.wednesday:
+        return "Wednesday";
+      case DateTime.thursday:
+        return "Thursday";
+      case DateTime.friday:
+        return "Friday";
+      case DateTime.saturday:
+        return "Saturday";
+      default:
+        return "Unknown";
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final gameData = ref.watch(gameDataManagerProvider);
+    final today = DateTime.now();
+    //TODO use actual user icon
+    const userIcon = AssetImage('assets/monsters/monster_2.png');
+
     final AppBar defaultAppBar = AppBar(
-      elevation: 1,
-      leading: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: CircleAvatar(child: Icon(Icons.people)),
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      leading: Padding(
+        padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 5),
+        child: CircleAvatar(
+          backgroundImage: userIcon,
+          child: SizedBox.expand(
+            child: Material(
+              shape: const CircleBorder(),
+              clipBehavior: Clip.hardEdge,
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () => context.navigateTo(const UserLoginRoute()),
+              ),
+            ),
+          ),
+        ),
       ),
       actions: [
         ...medalWidget(gameData.goldMedals, "gold"),
         ...medalWidget(gameData.silverMedals, "silver"),
         ...medalWidget(gameData.monsterMedals, "monster"),
       ],
+      bottom: PreferredSize(
+        preferredSize:
+            const Size.fromHeight(kBottomNavigationBarHeight * 4 / 5),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                  "${intToMonthString(today.month)} ${today.day}, ${intToWeekdayString(today.weekday)}"),
+            ),
+            const Divider()
+          ],
+        ),
+      ),
     );
 
     return AutoTabsScaffold(

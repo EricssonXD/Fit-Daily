@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:senior_active_adventure/util/isar/isar_manager.dart';
 import 'package:senior_active_adventure/util/router/router_debug.dart';
 import 'package:senior_active_adventure/util/theme/theme.dart';
@@ -19,15 +20,21 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Senior Active Adventure',
-      theme: MyTheme.lightTheme,
-      routerConfig: _appRouter.config(
-        navigatorObservers: () => [
-          MyObserver(),
-        ],
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      // builder: (context, child) => child!,
+      child: MaterialApp.router(
+        title: 'Senior Active Adventure',
+        theme: MyTheme.lightTheme,
+        routerConfig: _appRouter.config(
+          navigatorObservers: () => [
+            MyObserver(),
+          ],
+        ),
+        debugShowCheckedModeBanner: false,
       ),
-      debugShowCheckedModeBanner: false,
     );
   }
 }

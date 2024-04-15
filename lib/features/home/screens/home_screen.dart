@@ -1,7 +1,10 @@
 // Home Screen Widget
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:senior_active_adventure/features/game/model/game_data.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 part 'daily_goals.dart';
 
@@ -25,13 +28,6 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Hello John Doe',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
                     _DailyTasksComponent(),
                   ],
                 ),
