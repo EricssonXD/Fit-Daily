@@ -79,6 +79,9 @@ class UserLoginScreen extends HookConsumerWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   // backgroundColor: Colors.,
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.black,
+
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
@@ -87,10 +90,13 @@ class UserLoginScreen extends HookConsumerWidget {
                   // Login logic
                   context.navigateTo(const HomeRoute());
                 },
-                child: const AutoSizeText(
-                  'Login',
-                  maxLines: 1,
-                  style: TextStyle(fontSize: 20),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: AutoSizeText(
+                    'Login',
+                    maxLines: 1,
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               ),
             ),
