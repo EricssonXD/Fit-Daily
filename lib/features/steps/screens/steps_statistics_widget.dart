@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:senior_active_adventure/features/dialogs/popup_dialogs.dart';
 
 class StepStatWidget extends HookConsumerWidget {
   const StepStatWidget({super.key});
@@ -23,39 +24,54 @@ class StepStatWidget extends HookConsumerWidget {
           width: 0.8.sw,
           child: _StatsTabBar(tabController: tabController),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 0.1.sw),
-          child: const Row(
-            children: [
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Average"),
-                    Text("8000"),
-                  ],
-                ),
-              ),
-              VerticalDivider(
-                width: 20,
-                thickness: 20,
-                color: Colors.red,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Best"),
-                    Text("12000"),
-                  ],
-                ),
-              )
-            ],
-          ),
-        )
+        const _MonthTab(),
+        ElevatedButton(
+          onPressed: () {
+            MyDialog(context: context).show();
+          },
+          child: const Text("Test"),
+        ),
       ],
+    );
+  }
+}
+
+class _MonthTab extends StatelessWidget {
+  const _MonthTab();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 0.1.sw),
+      child: const Row(
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Average"),
+                Text("8000"),
+              ],
+            ),
+          ),
+          VerticalDivider(
+            width: 20,
+            thickness: 20,
+            color: Colors.red,
+          ),
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Best"),
+                Text("12000"),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
