@@ -1,12 +1,9 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../constants/colors.dart';
 
 class MessageTile extends StatelessWidget {
   const MessageTile({super.key, required this.sendByMe, required this.message});
@@ -36,8 +33,7 @@ class MessageTile extends StatelessWidget {
               width: size.width / 1.3,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 13),
               decoration: BoxDecoration(
-                  color:
-                      sendByMe ? MyColors.primaryColor : Colors.grey.shade200,
+                  color: sendByMe ? Colors.black : Colors.grey.shade200,
                   borderRadius: BorderRadius.only(
                     bottomLeft: sendByMe
                         ? const Radius.circular(12)
@@ -74,9 +70,15 @@ class MessageTile extends StatelessWidget {
               // ),
               IconButton(
                   onPressed: () async {
-                    await Clipboard.setData(ClipboardData(text: message, ));
+                    await Clipboard.setData(ClipboardData(
+                      text: message,
+                    ));
                   },
-                  icon: Icon(Icons.file_copy_outlined, color: Colors.grey.shade300, size: 20,)),
+                  icon: Icon(
+                    Icons.file_copy_outlined,
+                    color: Colors.grey.shade300,
+                    size: 20,
+                  )),
               // Icon(
               //   Icons.file_copy_outlined,
               //   color: Colors.grey.shade300,
@@ -95,4 +97,3 @@ class MessageTile extends StatelessWidget {
     }
   }
 }
-

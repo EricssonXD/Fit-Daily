@@ -1,29 +1,31 @@
 // First, declare the buildscript block
-buildscript {
-    ext.kotlin_version = '1.9.23'  // Example version, adjust as necessary
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'  // Example version
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms.google-services:4.3.15'  // Example version
-    }
-}
+// buildscript {
+//     ext.kotlin_version = '1.9.23'  // Example version, adjust as necessary
+//     repositories {
+//         google()
+//         jcenter()
+//         mavenCentral()
+//     }
+//     dependencies {
+//         classpath 'com.android.tools.build:gradle:7.3.0'  // Example version
+//         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//         classpath 'com.google.gms:google-services:4.3.15'  // Example version
+//     }
+// }
 
 // After the buildscript block, declare the plugins block
-plugins {
-    id 'com.android.application' apply false
-    id 'kotlin-android' apply false
-    id 'com.google.gms.google-services' apply false
-    id 'dev.flutter.flutter-gradle-plugin' apply false
-}
+// plugins {
+//     id 'com.android.application' apply false
+//     id 'kotlin-android' apply false
+//     id("com.google.gms.google-services") version "4.4.1" apply false
+//     id 'dev.flutter.flutter-gradle-plugin' apply false
+// }
 
 // Continue with the rest of your Gradle script
 allprojects {
     repositories {
         google()
+        jcenter()
         mavenCentral()
     }
 }

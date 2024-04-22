@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "815106099921",
+    "firebase_url": "https://senior-active-adventure-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "senior-active-adventure",
     "storage_bucket": "senior-active-adventure.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "815106099921-ks42fbupm0f9f9jfjba76vgiesop3g0m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ericssonxd.senior_active_adventure",
+            "certificate_hash": "086f44f9cb51a2e36fc21dd2d355b10041e020f6"
+          }
+        },
         {
           "client_id": "815106099921-6dpac7eekfoace1a06ahls5l7cc4khfq.apps.googleusercontent.com",
           "client_type": 3
@@ -34,7 +43,7 @@
               "client_id": "815106099921-sf6hon73m98nspdmi2k5peoeqm5dpv1d.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.senior_active_adventure"
+                "bundle_id": "com.example.fitDaily"
               }
             }
           ]

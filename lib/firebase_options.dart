@@ -57,6 +57,8 @@ class DefaultFirebaseOptions {
     appId: '1:815106099921:android:34dc18b1b5bd98dec2d3f0',
     messagingSenderId: '815106099921',
     projectId: 'senior-active-adventure',
+    databaseURL: 'https://senior-active-adventure-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'senior-active-adventure.appspot.com',
   );
+
 }

@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gemini/src/constants/colors.dart';
-import 'package:flutter_gemini/src/features/chat/components/message_tile.dart';
-import 'package:flutter_gemini/src/features/chat/components/send_message_widget.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:senior_active_adventure/features/chat/components/message_tile.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -13,7 +10,6 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
   List<Content> history = [];
   late final GenerativeModel _model;
   late final ChatSession _chat;
@@ -21,11 +17,12 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _textFieldFocus = FocusNode();
   bool _loading = false;
-  static const _apiKey = 'AIzaSyDouR4BFhc8_Ymg-pPZwXmm0lPSPJ3mY-Q'; // https://ai.google.dev/ (Get API key from this link)
+  static const _apiKey =
+      'AIzaSyDouR4BFhc8_Ymg-pPZwXmm0lPSPJ3mY-Q'; // https://ai.google.dev/ (Get API key from this link)
 
   void _scrollDown() {
     WidgetsBinding.instance.addPostFrameCallback(
-          (_) => _scrollController.animateTo(
+      (_) => _scrollController.animateTo(
         _scrollController.position.minScrollExtent,
         duration: const Duration(
           milliseconds: 750,
@@ -39,7 +36,8 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     _model = GenerativeModel(
-      model: 'gemini-pro', apiKey: _apiKey,
+      model: 'gemini-pro',
+      apiKey: _apiKey,
     );
     _chat = _model.startChat();
   }
@@ -58,7 +56,7 @@ class _ChatScreenState extends State<ChatScreen> {
             itemCount: history.reversed.length,
             controller: _scrollController,
             reverse: true,
-            itemBuilder: (context, index){
+            itemBuilder: (context, index) {
               var content = history.reversed.toList()[index];
               var text = content.parts
                   .whereType<TextPart>()
@@ -67,11 +65,12 @@ class _ChatScreenState extends State<ChatScreen> {
               return MessageTile(
                 sendByMe: content.role == 'user',
                 message: text,
-
               );
             },
-            separatorBuilder: (context, index){
-              return const SizedBox(height: 15,);
+            separatorBuilder: (context, index) {
+              return const SizedBox(
+                height: 15,
+              );
             },
           ),
           Align(
@@ -81,56 +80,66 @@ class _ChatScreenState extends State<ChatScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border(top: BorderSide(color: Colors.grey.shade200))
-              ),
+                  border: Border(top: BorderSide(color: Colors.grey.shade200))),
               child: Row(
                 children: [
                   Expanded(
                     child: SizedBox(
                       height: 55,
                       child: TextField(
-                        cursorColor: MyColors.primaryColor,
+                        cursorColor: Colors.black,
                         controller: _textController,
                         autofocus: true,
                         focusNode: _textFieldFocus,
                         decoration: InputDecoration(
                             hintText: 'Ask me anything...',
                             hintStyle: const TextStyle(color: Colors.grey),
-                            filled: true, fillColor: Colors.grey.shade200,
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                            filled: true,
+                            fillColor: Colors.grey.shade200,
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 15),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10)
-                            )
-                        ),
+                                borderRadius: BorderRadius.circular(10))),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10,),
+                  const SizedBox(
+                    width: 10,
+                  ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
-                        history.add(Content('user', [TextPart(_textController.text)]));
+                        history.add(
+                            Content('user', [TextPart(_textController.text)]));
                       });
                       _sendChatMessage(_textController.text, history.length);
                     },
                     child: Container(
-                      width: 50, height: 50,
+                      width: 50,
+                      height: 50,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: MyColors.primaryColor,
+                          color: Colors.black,
                           shape: BoxShape.circle,
                           boxShadow: [
-                            BoxShadow(offset: const Offset(1,1), blurRadius: 3, spreadRadius: 3, color: Colors.black.withOpacity(0.05))
-                          ]
-                      ),
+                            BoxShadow(
+                                offset: const Offset(1, 1),
+                                blurRadius: 3,
+                                spreadRadius: 3,
+                                color: Colors.black.withOpacity(0.05))
+                          ]),
                       child: _loading
                           ? const Padding(
-                            padding: EdgeInsets.all(15.0),
-                            child: CircularProgressIndicator.adaptive(
-                                                    backgroundColor: Colors.white, ),
-                          )
-                          : const Icon(Icons.send_rounded, color: Colors.white,),
+                              padding: EdgeInsets.all(15.0),
+                              child: CircularProgressIndicator.adaptive(
+                                backgroundColor: Colors.white,
+                              ),
+                            )
+                          : const Icon(
+                              Icons.send_rounded,
+                              color: Colors.white,
+                            ),
                     ),
                   )
                 ],
@@ -156,7 +165,7 @@ class _ChatScreenState extends State<ChatScreen> {
       var response = _chat.sendMessageStream(
         Content.text(message),
       );
-      await for(var item in response){
+      await for (var item in response) {
         var text = item.text;
         if (text == null) {
           _showError('No response from API.');
@@ -165,16 +174,13 @@ class _ChatScreenState extends State<ChatScreen> {
           setState(() {
             _loading = false;
             parts.add(TextPart(text));
-            if((history.length - 1) == historyIndex){
+            if ((history.length - 1) == historyIndex) {
               history.removeAt(historyIndex);
             }
             history.insert(historyIndex, Content('model', parts));
-
           });
         }
       }
-
-
     } catch (e, t) {
       print(e);
       print(t);
@@ -210,5 +216,4 @@ class _ChatScreenState extends State<ChatScreen> {
       },
     );
   }
-  
 }

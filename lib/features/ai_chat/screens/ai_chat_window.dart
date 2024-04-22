@@ -26,7 +26,7 @@ class _AIChatWindow extends HookConsumerWidget {
 }
 
 class _AIChatBubble extends StatelessWidget {
-  const _AIChatBubble({Key? key, required this.message}) : super(key: key);
+  const _AIChatBubble({required this.message});
 
   final AIChatMessage message;
 
