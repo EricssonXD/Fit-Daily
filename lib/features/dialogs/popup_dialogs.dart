@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MyDialog {
-  const MyDialog({required this.context});
+  const MyDialog({
+    required this.context,
+    required this.type,
+  });
+
   final BuildContext context;
+  final MyDialogType type;
 
   void show() {
     showDialog(
@@ -16,24 +21,27 @@ class MyDialog {
 
   AlertDialog medalDialog(BuildContext context) {
     return AlertDialog(
-      title: SizedBox(
-        height: 100,
-        child: SvgPicture.asset("assets/ui/medal_gold.svg"),
+      icon: SizedBox(
+        height: 150,
+        child: SvgPicture.asset("assets/ui/medal_${type.image}.svg"),
       ),
-      content: const Text('AlertDialog description'),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text('Approve'),
-        ),
-      ],
+      content: Text('You got a ${type.content}!', textAlign: TextAlign.center),
+      actions: const <Widget>[],
     );
   }
 }
 
 enum MyDialogType {
-  silverMedal,
-  goldMedal,
+  goldMedal(content: "Gold Star", image: "gold"),
+  silverMedal(content: "Silver Star", image: "silver"),
+  monsterMedal(content: "Monster Star", image: "monster"),
+  ;
+
+  const MyDialogType({
+    required this.content,
+    required this.image,
+  });
+
+  final String content;
+  final String image;
 }

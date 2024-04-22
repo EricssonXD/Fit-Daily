@@ -27,7 +27,7 @@ class StepStatWidget extends HookConsumerWidget {
         const _MonthTab(),
         ElevatedButton(
           onPressed: () {
-            MyDialog(context: context).show();
+            MyDialog(context: context, type: MyDialogType.silverMedal).show();
           },
           child: const Text("Test"),
         ),
