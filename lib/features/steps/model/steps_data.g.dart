@@ -28,6 +28,10 @@ const StepsDataSchema = IsarGeneratedSchema(
         name: 'stepsTaken',
         type: IsarType.long,
       ),
+      IsarPropertySchema(
+        name: 'isSynced',
+        type: IsarType.bool,
+      ),
     ],
     indexes: [],
   ),
@@ -43,6 +47,7 @@ const StepsDataSchema = IsarGeneratedSchema(
 int serializeStepsData(IsarWriter writer, StepsData object) {
   IsarCore.writeLong(writer, 1, object.date.toUtc().microsecondsSinceEpoch);
   IsarCore.writeLong(writer, 2, object.stepsTaken);
+  IsarCore.writeBool(writer, 3, object.isSynced);
   return object.id;
 }
 
@@ -61,10 +66,13 @@ StepsData deserializeStepsData(IsarReader reader) {
   }
   final int _stepsTaken;
   _stepsTaken = IsarCore.readLong(reader, 2);
+  final bool _isSynced;
+  _isSynced = IsarCore.readBool(reader, 3);
   final object = StepsData(
     id: _id,
     date: _date,
     stepsTaken: _stepsTaken,
+    isSynced: _isSynced,
   );
   return object;
 }
@@ -86,6 +94,8 @@ dynamic deserializeStepsDataProp(IsarReader reader, int property) {
       }
     case 2:
       return IsarCore.readLong(reader, 2);
+    case 3:
+      return IsarCore.readBool(reader, 3);
     default:
       throw ArgumentError('Unknown property: $property');
   }
@@ -96,6 +106,7 @@ sealed class _StepsDataUpdate {
     required int id,
     DateTime? date,
     int? stepsTaken,
+    bool? isSynced,
   });
 }
 
@@ -109,12 +120,14 @@ class _StepsDataUpdateImpl implements _StepsDataUpdate {
     required int id,
     Object? date = ignore,
     Object? stepsTaken = ignore,
+    Object? isSynced = ignore,
   }) {
     return collection.updateProperties([
           id
         ], {
           if (date != ignore) 1: date as DateTime?,
           if (stepsTaken != ignore) 2: stepsTaken as int?,
+          if (isSynced != ignore) 3: isSynced as bool?,
         }) >
         0;
   }
@@ -125,6 +138,7 @@ sealed class _StepsDataUpdateAll {
     required List<int> id,
     DateTime? date,
     int? stepsTaken,
+    bool? isSynced,
   });
 }
 
@@ -138,10 +152,12 @@ class _StepsDataUpdateAllImpl implements _StepsDataUpdateAll {
     required List<int> id,
     Object? date = ignore,
     Object? stepsTaken = ignore,
+    Object? isSynced = ignore,
   }) {
     return collection.updateProperties(id, {
       if (date != ignore) 1: date as DateTime?,
       if (stepsTaken != ignore) 2: stepsTaken as int?,
+      if (isSynced != ignore) 3: isSynced as bool?,
     });
   }
 }
@@ -156,6 +172,7 @@ sealed class _StepsDataQueryUpdate {
   int call({
     DateTime? date,
     int? stepsTaken,
+    bool? isSynced,
   });
 }
 
@@ -169,10 +186,12 @@ class _StepsDataQueryUpdateImpl implements _StepsDataQueryUpdate {
   int call({
     Object? date = ignore,
     Object? stepsTaken = ignore,
+    Object? isSynced = ignore,
   }) {
     return query.updateProperties(limit: limit, {
       if (date != ignore) 1: date as DateTime?,
       if (stepsTaken != ignore) 2: stepsTaken as int?,
+      if (isSynced != ignore) 3: isSynced as bool?,
     });
   }
 }
@@ -194,12 +213,14 @@ class _StepsDataQueryBuilderUpdateImpl implements _StepsDataQueryUpdate {
   int call({
     Object? date = ignore,
     Object? stepsTaken = ignore,
+    Object? isSynced = ignore,
   }) {
     final q = query.build();
     try {
       return q.updateProperties(limit: limit, {
         if (date != ignore) 1: date as DateTime?,
         if (stepsTaken != ignore) 2: stepsTaken as int?,
+        if (isSynced != ignore) 3: isSynced as bool?,
       });
     } finally {
       q.close();
@@ -462,6 +483,19 @@ extension StepsDataQueryFilter
       );
     });
   }
+
+  QueryBuilder<StepsData, StepsData, QAfterFilterCondition> isSyncedEqualTo(
+    bool value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        EqualCondition(
+          property: 3,
+          value: value,
+        ),
+      );
+    });
+  }
 }
 
 extension StepsDataQueryObject
@@ -503,6 +537,18 @@ extension StepsDataQuerySortBy on QueryBuilder<StepsData, StepsData, QSortBy> {
       return query.addSortBy(2, sort: Sort.desc);
     });
   }
+
+  QueryBuilder<StepsData, StepsData, QAfterSortBy> sortByIsSynced() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3);
+    });
+  }
+
+  QueryBuilder<StepsData, StepsData, QAfterSortBy> sortByIsSyncedDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3, sort: Sort.desc);
+    });
+  }
 }
 
 extension StepsDataQuerySortThenBy
@@ -542,6 +588,18 @@ extension StepsDataQuerySortThenBy
       return query.addSortBy(2, sort: Sort.desc);
     });
   }
+
+  QueryBuilder<StepsData, StepsData, QAfterSortBy> thenByIsSynced() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3);
+    });
+  }
+
+  QueryBuilder<StepsData, StepsData, QAfterSortBy> thenByIsSyncedDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(3, sort: Sort.desc);
+    });
+  }
 }
 
 extension StepsDataQueryWhereDistinct
@@ -555,6 +613,12 @@ extension StepsDataQueryWhereDistinct
   QueryBuilder<StepsData, StepsData, QAfterDistinct> distinctByStepsTaken() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(2);
+    });
+  }
+
+  QueryBuilder<StepsData, StepsData, QAfterDistinct> distinctByIsSynced() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(3);
     });
   }
 }
@@ -578,6 +642,12 @@ extension StepsDataQueryProperty1
       return query.addProperty(2);
     });
   }
+
+  QueryBuilder<StepsData, bool, QAfterProperty> isSyncedProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
+    });
+  }
 }
 
 extension StepsDataQueryProperty2<R>
@@ -599,6 +669,12 @@ extension StepsDataQueryProperty2<R>
       return query.addProperty(2);
     });
   }
+
+  QueryBuilder<StepsData, (R, bool), QAfterProperty> isSyncedProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
+    });
+  }
 }
 
 extension StepsDataQueryProperty3<R1, R2>
@@ -618,6 +694,12 @@ extension StepsDataQueryProperty3<R1, R2>
   QueryBuilder<StepsData, (R1, R2, int), QOperations> stepsTakenProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addProperty(2);
+    });
+  }
+
+  QueryBuilder<StepsData, (R1, R2, bool), QOperations> isSyncedProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addProperty(3);
     });
   }
 }

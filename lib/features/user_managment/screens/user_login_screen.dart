@@ -1,10 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:senior_active_adventure/features/user_managment/model/google_singin.dart';
 import 'package:senior_active_adventure/util/router/router.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 @RoutePage()
 class UserLoginScreen extends HookConsumerWidget {
@@ -100,6 +103,24 @@ class UserLoginScreen extends HookConsumerWidget {
                 ),
               ),
             ),
+            const Divider(
+              color: Colors.black,
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+            ),
+            SignInButton(
+              Buttons.google,
+              text: "Sign in with Google",
+              onPressed: () async {
+                // Sign in with Google
+                FirebaseGoogleSignin.signInWithGoogle().then((value) {
+                  if (value != null) {
+                    context.navigateTo(const HomeRoute());
+                  }
+                });
+              },
+            )
           ],
         ),
       ),

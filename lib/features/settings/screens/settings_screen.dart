@@ -1,16 +1,45 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:senior_active_adventure/firebase/firestore_provider.dart';
+import 'package:senior_active_adventure/util/router/router.dart';
 
 @RoutePage()
-class SettingScreen extends StatelessWidget {
+class SettingScreen extends ConsumerWidget {
   const SettingScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Settings Screen'),
-      ),
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () {
+                // ref.read(authProvider).signOut();
+                context.navigateTo(const UserLoginRoute());
+              },
+            )
+          ],
+        ),
+        body: ListView(
+          children: [
+            ListTile(
+              title: const Text("Profile"),
+              onTap: () {
+                final repository = ref.read(fireStoreManagerProvider);
+                repository
+                    .collection("users")
+                    .doc(FirebaseAuth.instance.currentUser!.uid)
+                    .set({
+                  "steps": 1000,
+                });
+                print("YOOOO");
+              },
+            ),
+          ],
+        ));
   }
 }

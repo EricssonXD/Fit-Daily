@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "815106099921-g9ju26lpgl1s3agg9ag397uj808pib4k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ericssonxd.senior_active_adventure",
+            "certificate_hash": "c7d024aae62def2a4bb067cb28d2ea0f07b971bc"
+          }
+        },
+        {
           "client_id": "815106099921-ks42fbupm0f9f9jfjba76vgiesop3g0m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

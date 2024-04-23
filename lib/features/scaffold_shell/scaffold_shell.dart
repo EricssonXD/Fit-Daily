@@ -93,7 +93,7 @@ class ScaffoldShellScreen extends ConsumerWidget {
               clipBehavior: Clip.hardEdge,
               color: Colors.transparent,
               child: InkWell(
-                onTap: () => context.navigateTo(const UserLoginRoute()),
+                onTap: () => context.navigateTo(const SettingRoute()),
               ),
             ),
           ),

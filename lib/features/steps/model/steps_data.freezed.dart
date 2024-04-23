@@ -12,13 +12,14 @@ part of 'steps_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StepsData {
   int get id => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   int get stepsTaken => throw _privateConstructorUsedError;
+  bool get isSynced => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StepsDataCopyWith<StepsData> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $StepsDataCopyWith<$Res> {
   factory $StepsDataCopyWith(StepsData value, $Res Function(StepsData) then) =
       _$StepsDataCopyWithImpl<$Res, StepsData>;
   @useResult
-  $Res call({int id, DateTime date, int stepsTaken});
+  $Res call({int id, DateTime date, int stepsTaken, bool isSynced});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$StepsDataCopyWithImpl<$Res, $Val extends StepsData>
     Object? id = null,
     Object? date = null,
     Object? stepsTaken = null,
+    Object? isSynced = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -63,6 +65,10 @@ class _$StepsDataCopyWithImpl<$Res, $Val extends StepsData>
           ? _value.stepsTaken
           : stepsTaken // ignore: cast_nullable_to_non_nullable
               as int,
+      isSynced: null == isSynced
+          ? _value.isSynced
+          : isSynced // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$StepsDataImplCopyWith<$Res>
       __$$StepsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, DateTime date, int stepsTaken});
+  $Res call({int id, DateTime date, int stepsTaken, bool isSynced});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$StepsDataImplCopyWithImpl<$Res>
     Object? id = null,
     Object? date = null,
     Object? stepsTaken = null,
+    Object? isSynced = null,
   }) {
     return _then(_$StepsDataImpl(
       id: null == id
@@ -106,6 +113,10 @@ class __$$StepsDataImplCopyWithImpl<$Res>
           ? _value.stepsTaken
           : stepsTaken // ignore: cast_nullable_to_non_nullable
               as int,
+      isSynced: null == isSynced
+          ? _value.isSynced
+          : isSynced // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -114,7 +125,10 @@ class __$$StepsDataImplCopyWithImpl<$Res>
 
 class _$StepsDataImpl implements _StepsData {
   const _$StepsDataImpl(
-      {required this.id, required this.date, required this.stepsTaken});
+      {required this.id,
+      required this.date,
+      required this.stepsTaken,
+      this.isSynced = false});
 
   @override
   final int id;
@@ -122,10 +136,13 @@ class _$StepsDataImpl implements _StepsData {
   final DateTime date;
   @override
   final int stepsTaken;
+  @override
+  @JsonKey()
+  final bool isSynced;
 
   @override
   String toString() {
-    return 'StepsData(id: $id, date: $date, stepsTaken: $stepsTaken)';
+    return 'StepsData(id: $id, date: $date, stepsTaken: $stepsTaken, isSynced: $isSynced)';
   }
 
   @override
@@ -136,11 +153,13 @@ class _$StepsDataImpl implements _StepsData {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.stepsTaken, stepsTaken) ||
-                other.stepsTaken == stepsTaken));
+                other.stepsTaken == stepsTaken) &&
+            (identical(other.isSynced, isSynced) ||
+                other.isSynced == isSynced));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, date, stepsTaken);
+  int get hashCode => Object.hash(runtimeType, id, date, stepsTaken, isSynced);
 
   @JsonKey(ignore: true)
   @override
@@ -153,7 +172,8 @@ abstract class _StepsData implements StepsData {
   const factory _StepsData(
       {required final int id,
       required final DateTime date,
-      required final int stepsTaken}) = _$StepsDataImpl;
+      required final int stepsTaken,
+      final bool isSynced}) = _$StepsDataImpl;
 
   @override
   int get id;
@@ -161,6 +181,8 @@ abstract class _StepsData implements StepsData {
   DateTime get date;
   @override
   int get stepsTaken;
+  @override
+  bool get isSynced;
   @override
   @JsonKey(ignore: true)
   _$$StepsDataImplCopyWith<_$StepsDataImpl> get copyWith =>

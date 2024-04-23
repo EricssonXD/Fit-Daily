@@ -4,6 +4,7 @@ import 'package:senior_active_adventure/features/ai_chat/screens/ai_chat_screen.
 import 'package:senior_active_adventure/features/home/screens/home_screen.dart';
 import 'package:senior_active_adventure/features/leaderboard/screens/leaderboard_screen.dart';
 import 'package:senior_active_adventure/features/scaffold_shell/scaffold_shell.dart';
+import 'package:senior_active_adventure/features/settings/screens/settings_screen.dart';
 import 'package:senior_active_adventure/features/user_managment/screens/user_login_screen.dart';
 
 part 'router.gr.dart';
@@ -13,6 +14,7 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: UserLoginRoute.page),
+        AutoRoute(page: SettingRoute.page),
 
         /// routes go here
         AutoRoute(

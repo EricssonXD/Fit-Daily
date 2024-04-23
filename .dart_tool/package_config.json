@@ -416,6 +416,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///C:/Users/ho/AppData/Local/Pub/Cache/hosted/pub.dev/font_awesome_flutter-10.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "freezed",
       "rootUri": "file:///C:/Users/ho/AppData/Local/Pub/Cache/hosted/pub.dev/freezed-2.5.2",
       "packageUri": "lib/",
@@ -764,6 +770,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "sign_in_button",
+      "rootUri": "file:///C:/Users/ho/AppData/Local/Pub/Cache/hosted/pub.dev/sign_in_button-3.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -980,7 +992,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-04-22T13:58:39.711883Z",
+  "generated": "2024-04-23T14:24:13.185446Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }

@@ -12,5 +12,6 @@ class StepsData with _$StepsData {
     required int id,
     required DateTime date,
     required int stepsTaken,
+    @Default(false) bool isSynced,
   }) = _StepsData;
 }
