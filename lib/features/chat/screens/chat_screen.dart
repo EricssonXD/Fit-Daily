@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:senior_active_adventure/features/chat/components/message_tile.dart';
+import 'package:senior_active_adventure/util/secrets.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -17,8 +18,8 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _textFieldFocus = FocusNode();
   bool _loading = false;
-  static const _apiKey =
-      'AIzaSyDouR4BFhc8_Ymg-pPZwXmm0lPSPJ3mY-Q'; // https://ai.google.dev/ (Get API key from this link)
+  static const _apiKey = MySecrets
+      .geminiApiKey; // https://ai.google.dev/ (Get API key from this link)
 
   void _scrollDown() {
     WidgetsBinding.instance.addPostFrameCallback(
@@ -44,11 +45,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Gemini AI'),
-      ),
       body: Stack(
         children: [
           ListView.separated(

@@ -25,7 +25,6 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _DailyTasksComponent(),
-            SizedBox(height: 50),
             StepStatWidget(),
           ],
         ));

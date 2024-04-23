@@ -1,8 +1,13 @@
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:senior_active_adventure/features/dialogs/popup_dialogs.dart';
+import 'package:senior_active_adventure/features/steps/model/steps_data.dart';
+
+part "steps_barchart_widget.dart";
 
 class StepStatWidget extends HookConsumerWidget {
   const StepStatWidget({super.key});
@@ -16,63 +21,222 @@ class StepStatWidget extends HookConsumerWidget {
         const Center(
             child: Text(
           "Your Steps Progress",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         )),
         const SizedBox(height: 10),
         SizedBox(
-          height: 40,
+          height: 35,
           width: 0.8.sw,
           child: _StatsTabBar(tabController: tabController),
         ),
-        const _MonthTab(),
-        ElevatedButton(
-          onPressed: () {
-            MyDialog(context: context, type: MyDialogType.silverMedal).show();
-          },
-          child: const Text("Test"),
-        ),
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight:
+                1.sh - 150 - kBottomNavigationBarHeight - 50 - 35 - 10 - 163,
+            maxWidth: 1.sw,
+          ),
+          child: TabBarView(
+            controller: tabController,
+            children: const [
+              _TodayTab(),
+              _WeekTab(),
+              _MonthTab(),
+            ],
+          ),
+        )
       ],
     );
   }
 }
 
-class _MonthTab extends StatelessWidget {
+class _MonthTab extends ConsumerWidget {
   const _MonthTab();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stepData = [
+      StepsData(id: 0, date: DateTime(2017, 9, 7), stepsTaken: 10000),
+      StepsData(id: 0, date: DateTime(2017, 9, 8), stepsTaken: 9999),
+      StepsData(id: 0, date: DateTime(2017, 9, 9), stepsTaken: 8888),
+      StepsData(id: 0, date: DateTime(2017, 9, 10), stepsTaken: 7777),
+      StepsData(id: 0, date: DateTime(2017, 9, 11), stepsTaken: 6666),
+    ];
+
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 0.1.sw),
-      child: const Row(
+      padding: EdgeInsets.only(left: 0.1.sw, right: 0.1.sw, top: 0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Average"),
-                Text("8000"),
-              ],
+          Row(
+            children: [
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                    text: "Average\n",
+                    style: DefaultTextStyle.of(context).style.copyWith(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                          height: 1,
+                        ),
+                    children: const [
+                      TextSpan(
+                        text: "8000",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(text: " steps")
+                    ],
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: SizedBox(
+                  height: 35,
+                  child: VerticalDivider(),
+                ),
+              ),
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                    text: "Best\n",
+                    style: DefaultTextStyle.of(context).style.copyWith(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                          height: 1,
+                        ),
+                    children: const [
+                      TextSpan(
+                        text: "12000",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(text: " steps")
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 50.0),
+            child: SizedBox(
+              height: 1.sh - 150 - kBottomNavigationBarHeight - 370,
+              child: _StepsBarChart(
+                type: _TabType.month,
+                data: stepData,
+              ),
             ),
           ),
-          VerticalDivider(
-            width: 20,
-            thickness: 20,
-            color: Colors.red,
-          ),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Best"),
-                Text("12000"),
-              ],
-            ),
-          )
         ],
       ),
     );
+  }
+}
+
+class _WeekTab extends ConsumerWidget {
+  const _WeekTab();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stepData = [
+      StepsData(id: 0, date: DateTime(2017, 9, 7), stepsTaken: 10000),
+      StepsData(id: 0, date: DateTime(2017, 9, 8), stepsTaken: 9999),
+      StepsData(id: 0, date: DateTime(2017, 9, 9), stepsTaken: 8888),
+      StepsData(id: 0, date: DateTime(2017, 9, 10), stepsTaken: 7777),
+      StepsData(id: 0, date: DateTime(2017, 9, 11), stepsTaken: 6666),
+    ];
+
+    return Padding(
+      padding: EdgeInsets.only(left: 0.1.sw, right: 0.1.sw, top: 0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                    text: "Average\n",
+                    style: DefaultTextStyle.of(context).style.copyWith(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                          height: 1,
+                        ),
+                    children: const [
+                      TextSpan(
+                        text: "8000",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(text: " steps")
+                    ],
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: SizedBox(
+                  height: 35,
+                  child: VerticalDivider(),
+                ),
+              ),
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                    text: "Best\n",
+                    style: DefaultTextStyle.of(context).style.copyWith(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                          height: 1,
+                        ),
+                    children: const [
+                      TextSpan(
+                        text: "12000",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(text: " steps")
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 50.0),
+            child: SizedBox(
+              height: 1.sh - 150 - kBottomNavigationBarHeight - 370,
+              child: _StepsBarChart(
+                type: _TabType.week,
+                data: stepData,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _TodayTab extends ConsumerWidget {
+  const _TodayTab({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Container();
   }
 }
 

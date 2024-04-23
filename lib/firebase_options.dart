@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:senior_active_adventure/util/secrets.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -52,13 +53,5 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDBevV2gZbHwdgVcVr9Swml5poUV8Njf4E',
-    appId: '1:815106099921:android:34dc18b1b5bd98dec2d3f0',
-    messagingSenderId: '815106099921',
-    projectId: 'senior-active-adventure',
-    databaseURL: 'https://senior-active-adventure-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'senior-active-adventure.appspot.com',
-  );
-
+  static const FirebaseOptions android = MySecrets.firebaseOptionsAndroid;
 }

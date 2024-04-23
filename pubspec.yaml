@@ -12,10 +12,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # Firebase
   firebase_core: ^2.17.0
   cloud_firestore: ^4.16.1
   firebase_auth: ^4.10.1
   google_sign_in: ^6.1.5
+
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
   hooks_riverpod: ^2.4.9
