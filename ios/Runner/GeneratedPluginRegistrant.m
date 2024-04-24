@@ -48,6 +48,18 @@
 @import path_provider_foundation;
 #endif
 
+#if __has_include(<pedometer/PedometerPlugin.h>)
+#import <pedometer/PedometerPlugin.h>
+#else
+@import pedometer;
+#endif
+
+#if __has_include(<sensors_plus/FPPSensorsPlusPlugin.h>)
+#import <sensors_plus/FPPSensorsPlusPlugin.h>
+#else
+@import sensors_plus;
+#endif
+
 #if __has_include(<url_launcher_ios/URLLauncherPlugin.h>)
 #import <url_launcher_ios/URLLauncherPlugin.h>
 #else
@@ -64,6 +76,8 @@
   [FLTGoogleSignInPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleSignInPlugin"]];
   [IsarFlutterLibsPlugin registerWithRegistrar:[registry registrarForPlugin:@"IsarFlutterLibsPlugin"]];
   [PathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"PathProviderPlugin"]];
+  [PedometerPlugin registerWithRegistrar:[registry registrarForPlugin:@"PedometerPlugin"]];
+  [FPPSensorsPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"FPPSensorsPlusPlugin"]];
   [URLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"URLLauncherPlugin"]];
 }
 

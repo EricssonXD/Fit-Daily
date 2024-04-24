@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:senior_active_adventure/features/game/model/slay_monster_provider.dart';
 import 'package:senior_active_adventure/firebase/firestore_provider.dart';
 import 'package:senior_active_adventure/util/router/router.dart';
 
@@ -39,6 +40,10 @@ class SettingScreen extends ConsumerWidget {
                 print("YOOOO");
               },
             ),
+            ListTile(
+              title: const Text("Swing"),
+              subtitle: Text(ref.watch(slayMonsterManagerProvider).toString()),
+            )
           ],
         ));
   }

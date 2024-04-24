@@ -1,0 +1,43 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"command": "dart",
+			"args": [
+				"run",
+				"build_runner",
+				"watch",
+				"--delete-conflicting-outputs"
+			],
+			"problemMatcher": [
+				"$dart-build_runner"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"label": "1. Build_runner Watch",
+			"detail": "",
+			"isBackground": true,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false,
+				"close": false
+			},
+			"runOptions": {
+				"instanceLimit": 1,
+				"runOn": "folderOpen"
+			}
+		},
+		{
+			"label": "Download Watch Buildrunner task",
+			"command": "curl -LJ https://raw.githubusercontent.com/EricssonXD/Ericsson-Flutter-Tools/main/task.json -o .vscode/tasks_watch.json",
+			"type": "shell"
+		}
+	]
+}
