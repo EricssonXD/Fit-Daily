@@ -6,7 +6,7 @@ part of 'step_counter.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$stepCounterHash() => r'c8481e8a844755f3913bf216de6401c09467569c';
+String _$stepCounterHash() => r'f5f601ae8eb3853e37e4afe68935d1c1fa0f23ef';
 
 /// See also [StepCounter].
 @ProviderFor(StepCounter)

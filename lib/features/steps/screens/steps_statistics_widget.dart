@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:senior_active_adventure/features/steps/model/step_counter.dart';
 import 'package:senior_active_adventure/features/steps/model/steps_data.dart';
 
 part "steps_barchart_widget.dart";
@@ -14,7 +15,7 @@ class StepStatWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final TabController tabController = useTabController(initialLength: 3);
+    // final TabController tabController = useTabController(initialLength: 3);
 
     return Column(
       children: [
@@ -27,23 +28,25 @@ class StepStatWidget extends HookConsumerWidget {
         SizedBox(
           height: 35,
           width: 0.8.sw,
-          child: _StatsTabBar(tabController: tabController),
+          child: const _StatsTabBar(),
         ),
-        ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight:
-                1.sh - 150 - kBottomNavigationBarHeight - 50 - 35 - 10 - 163,
-            maxWidth: 1.sw,
-          ),
-          child: TabBarView(
-            controller: tabController,
-            children: const [
-              _TodayTab(),
-              _WeekTab(),
-              _MonthTab(),
-            ],
-          ),
-        )
+      ],
+    );
+  }
+}
+
+class StepStatsBarchartTabs extends StatelessWidget {
+  const StepStatsBarchartTabs({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const TabBarView(
+      children: [
+        _TodayTab(),
+        _WeekTab(),
+        _MonthTab(),
       ],
     );
   }
@@ -236,16 +239,16 @@ class _TodayTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container();
+    return Text(ref.watch(stepCounterProvider).toString());
   }
 }
 
 class _StatsTabBar extends StatelessWidget {
-  const _StatsTabBar({
-    required this.tabController,
-  });
+  const _StatsTabBar(
+      // required this.tabController,
+      );
 
-  final TabController tabController;
+  // final TabController tabController;
 
   @override
   Widget build(BuildContext context) {
@@ -262,11 +265,11 @@ class _StatsTabBar extends StatelessWidget {
               surfaceVariant: Colors.transparent,
             ),
           ),
-          child: TabBar(
+          child: const TabBar(
             automaticIndicatorColorAdjustment: true,
-            controller: tabController,
-            splashBorderRadius: const BorderRadius.all(Radius.circular(50)),
-            indicator: const BoxDecoration(
+            // controller: tabController,
+            splashBorderRadius: BorderRadius.all(Radius.circular(50)),
+            indicator: BoxDecoration(
               boxShadow: [
                 BoxShadow(
                   color: Colors.black12,
@@ -280,7 +283,7 @@ class _StatsTabBar extends StatelessWidget {
             indicatorSize: TabBarIndicatorSize.tab,
             // indicatorColor: Colors.white,
             // labelColor: Colors.white,
-            tabs: const [
+            tabs: [
               Tab(
                 text: "Today",
               ),

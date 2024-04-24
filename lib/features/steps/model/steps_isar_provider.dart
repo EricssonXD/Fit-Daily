@@ -6,6 +6,12 @@ part 'steps_isar_provider.g.dart';
 
 @riverpod
 class StepsIsarManager extends _$StepsIsarManager {
+  void setTodaySteps(int steps) {
+    StepsData stepsData =
+        StepsData(id: getTodayInt, date: getToday, stepsTaken: steps);
+    IsarManager.isar.write((isar) => isar.stepsDatas.put(stepsData));
+  }
+
   @override
   StepsData build() {
     return IsarManager.isar.stepsDatas.get(getTodayInt) ??

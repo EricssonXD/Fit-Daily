@@ -6,7 +6,7 @@ part of 'steps_isar_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$stepsIsarManagerHash() => r'8806b6a4ac7839280433628aadcba4bccfeef938';
+String _$stepsIsarManagerHash() => r'208b984bdccdd51e2dfff1b9569f6dd1a58df516';
 
 /// See also [StepsIsarManager].
 @ProviderFor(StepsIsarManager)

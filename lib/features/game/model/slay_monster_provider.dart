@@ -45,7 +45,7 @@ class SlayMonsterManager extends _$SlayMonsterManager {
   double _dl = 0;
 
   final double _dt = _samplingPeriod.inMicroseconds * 1e-6;
-  static const double _slashThreshold = 0.5;
+  static const double _slashThreshold = 25;
 
   void accelerometerEvent(UserAccelerometerEvent event) {
     const th = 1;
@@ -85,7 +85,6 @@ class SlayMonsterManager extends _$SlayMonsterManager {
       }
       _slashingHalf = !_slashingHalf;
     }
-    print(_dl);
     _accelerometer = event;
   }
 

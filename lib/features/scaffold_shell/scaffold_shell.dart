@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:senior_active_adventure/features/game/model/game_data.dart';
 import 'package:senior_active_adventure/util/router/router.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,8 @@ class ScaffoldShellScreen extends ConsumerWidget {
   List<Widget> medalWidget(int num, String img) {
     return [
       SvgPicture.asset(
-        'assets/ui/medal_$img.svg',
+        FirebaseAuth.instance.currentUser?.photoURL ??
+            'assets/ui/medal_$img.svg',
         // height: 20.0,
         // width: 20.0,
         allowDrawingOutsideViewBox: true,

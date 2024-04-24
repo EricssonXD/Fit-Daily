@@ -1,5 +1,6 @@
 // Home Screen Widget
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,12 +22,17 @@ class HomeScreen extends StatelessWidget {
         extendBodyBehindAppBar: true,
 
         // A column widget that contains the widgets for a fitness app home screen
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _DailyTasksComponent(),
-            StepStatWidget(),
-          ],
+        body: DefaultTabController(
+          length: 3,
+          initialIndex: 2,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _DailyTasksComponent(),
+              StepStatWidget(),
+              Expanded(child: StepStatsBarchartTabs()),
+            ],
+          ),
         ));
   }
 }

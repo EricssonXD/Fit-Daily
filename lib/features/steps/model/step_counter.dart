@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:pedometer/pedometer.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:senior_active_adventure/features/steps/model/steps_db_provider.dart';
+import 'package:senior_active_adventure/features/steps/model/steps_isar_provider.dart';
 
 part 'step_counter.g.dart';
 
@@ -58,6 +58,7 @@ class StepCounter extends _$StepCounter {
     // Change State
     state = _todaySteps;
     ref.notifyListeners();
+    ref.read(stepsIsarManagerProvider.notifier).setTodaySteps(_todaySteps);
 
     return _todaySteps;
   }
