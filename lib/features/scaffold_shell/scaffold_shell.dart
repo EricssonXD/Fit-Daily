@@ -13,8 +13,7 @@ class ScaffoldShellScreen extends ConsumerWidget {
   List<Widget> medalWidget(int num, String img) {
     return [
       SvgPicture.asset(
-        FirebaseAuth.instance.currentUser?.photoURL ??
-            'assets/ui/medal_$img.svg',
+        'assets/ui/medal_$img.svg',
         // height: 20.0,
         // width: 20.0,
         allowDrawingOutsideViewBox: true,
@@ -80,15 +79,15 @@ class ScaffoldShellScreen extends ConsumerWidget {
     final gameData = ref.watch(gameDataManagerProvider);
     final today = DateTime.now();
     //TODO use actual user icon
-    const userIcon = AssetImage('assets/monsters/monster_2.png');
-
+    // const userIcon =  AssetImage('assets/monsters/monster_2.png');
+    final icon = NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!);
     final AppBar defaultAppBar = AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
       leading: Padding(
         padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 5),
         child: CircleAvatar(
-          backgroundImage: userIcon,
+          backgroundImage: icon,
           child: SizedBox.expand(
             child: Material(
               shape: const CircleBorder(),
