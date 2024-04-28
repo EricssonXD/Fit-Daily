@@ -91,6 +91,7 @@ class SlayMonsterManager extends _$SlayMonsterManager {
   late StreamSubscription<UserAccelerometerEvent> _accelerometerSubscription;
   late StreamSubscription<GyroscopeEvent> _gyroscopeSubscription;
   UserAccelerometerEvent _accelerometer = UserAccelerometerEvent(0, 0, 0);
+  // ignore: unused_field
   GyroscopeEvent _gyroscope = GyroscopeEvent(0, 0, 0);
 
   bool _slashing = false;
@@ -104,12 +105,11 @@ class SlayMonsterManager extends _$SlayMonsterManager {
   @override
   int build() {
     init();
-    print("YO");
     ref.onDispose(dispose);
     return 0;
   }
 }
 
-double _calculateDistance(double u, double a, double t) {
-  return u * t + 1 / 2 * a * t * t;
-}
+// double _calculateDistance(double u, double a, double t) {
+//   return u * t + 1 / 2 * a * t * t;
+// }

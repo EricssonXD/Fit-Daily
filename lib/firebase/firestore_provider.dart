@@ -23,8 +23,6 @@ class FireStoreManager extends _$FireStoreManager {
         persistenceEnabled: false,
       );
     }
-    print("Firebase Print");
-
     return _db;
   }
 }

@@ -1,8 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:senior_active_adventure/features/steps/model/step_counter.dart';
@@ -235,7 +232,7 @@ class _WeekTab extends ConsumerWidget {
 }
 
 class _TodayTab extends ConsumerWidget {
-  const _TodayTab({super.key});
+  const _TodayTab();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

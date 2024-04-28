@@ -7,7 +7,7 @@ part of 'slay_monster_provider.dart';
 // **************************************************************************
 
 String _$slayMonsterManagerHash() =>
-    r'913e6c5763267e554ce0553f7ec37ca5da75fa92';
+    r'b0fd571862b5daa2056e63e85b39cc0a8af98f44';
 
 /// See also [SlayMonsterManager].
 @ProviderFor(SlayMonsterManager)

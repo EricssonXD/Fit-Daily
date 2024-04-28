@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AIChatScreen(),
       );
     },
+    DebugRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DebugScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -64,6 +70,20 @@ class AIChatRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AIChatRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [DebugScreen]
+class DebugRoute extends PageRouteInfo<void> {
+  const DebugRoute({List<PageRouteInfo>? children})
+      : super(
+          DebugRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DebugRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

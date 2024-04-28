@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -26,8 +27,8 @@ class StepCounter extends _$StepCounter {
     );
   }
 
-  void _onDone() => print("Finished pedometer tracking");
-  void _onError(error) => print("Flutter Pedometer Error: $error");
+  void _onDone() => debugPrint("Finished pedometer tracking");
+  void _onError(error) => debugPrint("Flutter Pedometer Error: $error");
 
   Future<int> getTodaySteps(StepCount value) async {
     int savedStepsCount =

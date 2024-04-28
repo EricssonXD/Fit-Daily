@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class SendMessageWidget extends StatefulWidget {
-  const SendMessageWidget({Key? key}) : super(key: key);
+  const SendMessageWidget({super.key});
 
   @override
   _SendMessageWidgetState createState() => _SendMessageWidgetState();
