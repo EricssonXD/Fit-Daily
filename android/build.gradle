@@ -1,17 +1,17 @@
 // First, declare the buildscript block
-buildscript {
-    ext.kotlin_version = '1.9.23'  // Example version, adjust as necessary
-    repositories {
-        google()
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'  // Example version
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.4.1'  // Example version
-    }
-}
+// buildscript {
+//     ext.kotlin_version = '1.9.23'  // Example version, adjust as necessary
+//     repositories {
+//         google()
+//         jcenter()
+//         mavenCentral()
+//     }
+//     dependencies {
+//         classpath 'com.android.tools.build:gradle:7.3.0'  // Example version
+//         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//         classpath 'com.google.gms:google-services:4.4.1'  // Example version
+//     }
+// }
 
 // After the buildscript block, declare the plugins block
 // plugins {

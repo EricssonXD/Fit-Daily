@@ -80,14 +80,14 @@ class ScaffoldShellScreen extends ConsumerWidget {
     final today = DateTime.now();
     //TODO use actual user icon
     // const userIcon =  AssetImage('assets/monsters/monster_2.png');
-    final icon = NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!);
+    final userIcon = NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!);
     final AppBar defaultAppBar = AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
       leading: Padding(
         padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 5),
         child: CircleAvatar(
-          backgroundImage: icon,
+          backgroundImage: userIcon,
           child: SizedBox.expand(
             child: Material(
               shape: const CircleBorder(),
