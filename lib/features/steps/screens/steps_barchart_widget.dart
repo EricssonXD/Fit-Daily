@@ -17,6 +17,7 @@ class _StepsBarChart extends StatelessWidget {
       BarChartData(
         barTouchData: barTouchData,
         titlesData: titlesData,
+
         borderData: borderData,
         barGroups: barGroups,
         gridData: const FlGridData(show: false),
@@ -76,18 +77,20 @@ class _StepsBarChart extends StatelessWidget {
         text = "";
     }
 
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      space: 4,
-      child: Text(text, style: style),
-    );
+    return labelVisible
+        ? SideTitleWidget(
+            axisSide: meta.axisSide,
+            space: 4,
+            child: Text(text, style: style),
+          )
+        : const SizedBox();
   }
 
   FlTitlesData get titlesData => FlTitlesData(
-        show: labelVisible,
+        show: true,
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
-            showTitles: labelVisible,
+            showTitles: true,
             reservedSize: 30,
             getTitlesWidget: getTitles,
           ),
