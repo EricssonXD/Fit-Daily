@@ -33,7 +33,16 @@ const StepsDataSchema = IsarGeneratedSchema(
         type: IsarType.bool,
       ),
     ],
-    indexes: [],
+    indexes: [
+      IsarIndexSchema(
+        name: 'date',
+        properties: [
+          "date",
+        ],
+        unique: true,
+        hash: false,
+      ),
+    ],
   ),
   converter: IsarObjectConverter<int, StepsData>(
     serialize: serializeStepsData,

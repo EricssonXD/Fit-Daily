@@ -4,10 +4,12 @@ class _StepsBarChart extends StatelessWidget {
   _StepsBarChart({
     required this.type,
     required this.data,
+    this.labelVisible = true,
   });
 
   final _TabType type;
   final List<StepsData> data;
+  final bool labelVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -82,10 +84,10 @@ class _StepsBarChart extends StatelessWidget {
   }
 
   FlTitlesData get titlesData => FlTitlesData(
-        show: true,
+        show: labelVisible,
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
-            showTitles: true,
+            showTitles: labelVisible,
             reservedSize: 30,
             getTitlesWidget: getTitles,
           ),
@@ -121,7 +123,7 @@ class _StepsBarChart extends StatelessWidget {
                 color: e.date.day == today.day ? Colors.amber : Colors.orange,
               )
             ],
-            showingTooltipIndicators: [0],
+            showingTooltipIndicators: labelVisible ? [0] : [],
           ))
       .toList();
 }

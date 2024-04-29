@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$StepsData {
   int get id => throw _privateConstructorUsedError;
+  @Index(unique: true)
   DateTime get date => throw _privateConstructorUsedError;
   int get stepsTaken => throw _privateConstructorUsedError;
   bool get isSynced => throw _privateConstructorUsedError;
@@ -31,7 +32,11 @@ abstract class $StepsDataCopyWith<$Res> {
   factory $StepsDataCopyWith(StepsData value, $Res Function(StepsData) then) =
       _$StepsDataCopyWithImpl<$Res, StepsData>;
   @useResult
-  $Res call({int id, DateTime date, int stepsTaken, bool isSynced});
+  $Res call(
+      {int id,
+      @Index(unique: true) DateTime date,
+      int stepsTaken,
+      bool isSynced});
 }
 
 /// @nodoc
@@ -81,7 +86,11 @@ abstract class _$$StepsDataImplCopyWith<$Res>
       __$$StepsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, DateTime date, int stepsTaken, bool isSynced});
+  $Res call(
+      {int id,
+      @Index(unique: true) DateTime date,
+      int stepsTaken,
+      bool isSynced});
 }
 
 /// @nodoc
@@ -126,13 +135,14 @@ class __$$StepsDataImplCopyWithImpl<$Res>
 class _$StepsDataImpl implements _StepsData {
   const _$StepsDataImpl(
       {required this.id,
-      required this.date,
+      @Index(unique: true) required this.date,
       required this.stepsTaken,
       this.isSynced = false});
 
   @override
   final int id;
   @override
+  @Index(unique: true)
   final DateTime date;
   @override
   final int stepsTaken;
@@ -171,13 +181,14 @@ class _$StepsDataImpl implements _StepsData {
 abstract class _StepsData implements StepsData {
   const factory _StepsData(
       {required final int id,
-      required final DateTime date,
+      @Index(unique: true) required final DateTime date,
       required final int stepsTaken,
       final bool isSynced}) = _$StepsDataImpl;
 
   @override
   int get id;
   @override
+  @Index(unique: true)
   DateTime get date;
   @override
   int get stepsTaken;

@@ -1,9 +1,13 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:senior_active_adventure/features/steps/model/step_counter.dart';
+import 'package:isar/isar.dart';
 import 'package:senior_active_adventure/features/steps/model/steps_data.dart';
+import 'package:senior_active_adventure/features/steps/model/steps_isar_provider.dart';
+import 'package:senior_active_adventure/features/steps/model/steps_stat_provider.dart';
+import 'package:senior_active_adventure/util/isar/isar_manager.dart';
 
 part "steps_barchart_widget.dart";
 
@@ -54,13 +58,7 @@ class _MonthTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stepData = [
-      StepsData(id: 0, date: DateTime(2017, 9, 7), stepsTaken: 10000),
-      StepsData(id: 0, date: DateTime(2017, 9, 8), stepsTaken: 9999),
-      StepsData(id: 0, date: DateTime(2017, 9, 9), stepsTaken: 8888),
-      StepsData(id: 0, date: DateTime(2017, 9, 10), stepsTaken: 7777),
-      StepsData(id: 0, date: DateTime(2017, 9, 11), stepsTaken: 6666),
-    ];
+    final stepData = ref.watch(stepsStatsMonthProvider);
 
     return Padding(
       padding: EdgeInsets.only(left: 0.1.sw, right: 0.1.sw, top: 0),
@@ -129,6 +127,7 @@ class _MonthTab extends ConsumerWidget {
             child: SizedBox(
               height: 1.sh - 150 - kBottomNavigationBarHeight - 370,
               child: _StepsBarChart(
+                labelVisible: false,
                 type: _TabType.month,
                 data: stepData,
               ),
@@ -145,14 +144,7 @@ class _WeekTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stepData = [
-      StepsData(id: 0, date: DateTime(2017, 9, 7), stepsTaken: 10000),
-      StepsData(id: 0, date: DateTime(2017, 9, 8), stepsTaken: 9999),
-      StepsData(id: 0, date: DateTime(2017, 9, 9), stepsTaken: 8888),
-      StepsData(id: 0, date: DateTime(2017, 9, 10), stepsTaken: 7777),
-      StepsData(id: 0, date: DateTime(2017, 9, 11), stepsTaken: 6666),
-    ];
-
+    final stepData = ref.watch(stepsStatsWeekProvider);
     return Padding(
       padding: EdgeInsets.only(left: 0.1.sw, right: 0.1.sw, top: 0),
       child: Column(
@@ -231,12 +223,28 @@ class _WeekTab extends ConsumerWidget {
   }
 }
 
-class _TodayTab extends ConsumerWidget {
+class _TodayTab extends HookConsumerWidget {
   const _TodayTab();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Text(ref.watch(stepCounterProvider).toString());
+    final steps = useState(-1);
+    useOnStreamChange(
+      // IsarManager.isar.stepsDatas
+      //     .where()
+      //     .sortByDateDesc()
+      //     .watch(limit: 1, fireImmediately: true),
+      IsarManager.isar.stepsDatas
+          .where()
+          .idEqualTo(StepsIsarManager.getTodayId)
+          .watch(limit: 1, fireImmediately: true),
+      onData: (event) {
+        final snapshot = event.singleOrNull;
+        if (snapshot != null) steps.value = snapshot.stepsTaken;
+      },
+    );
+
+    return Text((steps.value).toString());
   }
 }
 

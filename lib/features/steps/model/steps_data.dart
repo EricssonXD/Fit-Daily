@@ -1,8 +1,10 @@
+// ignore_for_file: invalid_annotation_target
+// Ignore this for @Index annotation
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:isar/isar.dart';
 
 part 'steps_data.freezed.dart';
-
 part 'steps_data.g.dart';
 
 @collection
@@ -10,7 +12,7 @@ part 'steps_data.g.dart';
 class StepsData with _$StepsData {
   const factory StepsData({
     required int id,
-    required DateTime date,
+    @Index(unique: true) required DateTime date,
     required int stepsTaken,
     @Default(false) bool isSynced,
   }) = _StepsData;
