@@ -40,8 +40,8 @@ class _StepsBarChart extends StatelessWidget {
           ) {
             return BarTooltipItem(
               rod.toY.round().toString(),
-              const TextStyle(
-                color: Colors.red,
+              TextStyle(
+                color: Colors.grey.shade700,
                 fontWeight: FontWeight.bold,
               ),
             );

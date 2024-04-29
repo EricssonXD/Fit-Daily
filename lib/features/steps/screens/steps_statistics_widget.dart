@@ -76,16 +76,16 @@ class _MonthTab extends ConsumerWidget {
                           color: Colors.grey[600],
                           height: 1,
                         ),
-                    children: const [
+                    children: [
                       TextSpan(
-                        text: "8000",
-                        style: TextStyle(
+                        text: _averageSteps(stepData).toString(),
+                        style: const TextStyle(
                           fontSize: 28,
                           fontStyle: FontStyle.italic,
                           color: Colors.black,
                         ),
                       ),
-                      TextSpan(text: " steps")
+                      const TextSpan(text: " steps")
                     ],
                   ),
                 ),
@@ -106,16 +106,16 @@ class _MonthTab extends ConsumerWidget {
                           color: Colors.grey[600],
                           height: 1,
                         ),
-                    children: const [
+                    children: [
                       TextSpan(
-                        text: "12000",
-                        style: TextStyle(
+                        text: _maxSteps(stepData).toString(),
+                        style: const TextStyle(
                           fontSize: 28,
                           fontStyle: FontStyle.italic,
                           color: Colors.black,
                         ),
                       ),
-                      TextSpan(text: " steps")
+                      const TextSpan(text: " steps")
                     ],
                   ),
                 ),
@@ -161,16 +161,16 @@ class _WeekTab extends ConsumerWidget {
                           color: Colors.grey[600],
                           height: 1,
                         ),
-                    children: const [
+                    children: [
                       TextSpan(
-                        text: "8000",
-                        style: TextStyle(
+                        text: _averageSteps(stepData).toString(),
+                        style: const TextStyle(
                           fontSize: 28,
                           fontStyle: FontStyle.italic,
                           color: Colors.black,
                         ),
                       ),
-                      TextSpan(text: " steps")
+                      const TextSpan(text: " steps")
                     ],
                   ),
                 ),
@@ -191,16 +191,16 @@ class _WeekTab extends ConsumerWidget {
                           color: Colors.grey[600],
                           height: 1,
                         ),
-                    children: const [
+                    children: [
                       TextSpan(
-                        text: "12000",
-                        style: TextStyle(
+                        text: _maxSteps(stepData).toString(),
+                        style: const TextStyle(
                           fontSize: 28,
                           fontStyle: FontStyle.italic,
                           color: Colors.black,
                         ),
                       ),
-                      TextSpan(text: " steps")
+                      const TextSpan(text: " steps")
                     ],
                   ),
                 ),
@@ -304,4 +304,19 @@ class _StatsTabBar extends StatelessWidget {
       ),
     );
   }
+}
+
+int _maxSteps(List<StepsData> data) {
+  return data.fold<int>(0, (previousValue, element) {
+    return element.stepsTaken > previousValue
+        ? element.stepsTaken
+        : previousValue;
+  });
+}
+
+int _averageSteps(List<StepsData> data) {
+  return data.fold<int>(0, (previousValue, element) {
+        return previousValue + element.stepsTaken;
+      }) ~/
+      data.length;
 }

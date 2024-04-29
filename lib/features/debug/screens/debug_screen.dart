@@ -17,6 +17,9 @@ class DebugScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Debug Tools"),
+      ),
       body: ListView(
         children: [
           ListTile(
