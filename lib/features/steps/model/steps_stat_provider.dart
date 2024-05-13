@@ -10,10 +10,10 @@ part 'steps_stat_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 class StepsStatsToday extends _$StepsStatsToday {
-  StreamSubscription<StepsData?>? sub;
+  StreamSubscription<StepsData?>? _sub;
 
   void init() {
-    sub = IsarManager.isar.stepsDatas
+    _sub = IsarManager.isar.stepsDatas
         .watchObject(StepsIsarManager.getTodayId, fireImmediately: true)
         .asBroadcastStream()
         .listen((event) {
@@ -22,7 +22,7 @@ class StepsStatsToday extends _$StepsStatsToday {
   }
 
   void dispose() {
-    sub?.cancel();
+    _sub?.cancel();
   }
 
   @override
@@ -60,7 +60,9 @@ class StepsStatsMonth extends _$StepsStatsMonth {
   @override
   List<StepsData> build() {
     final today = StepsIsarManager.getToday;
-    final thisMonth = DateTime(today.year, today.month);
+    // final thisMonth = DateTime(today.year, today.month);
+    final thisMonth = today.subtract(const Duration(days: 30));
+
     _thisMonthData.addAll(IsarManager.isar.stepsDatas
         .where()
         .dateLessThan(today)

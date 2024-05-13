@@ -22,8 +22,8 @@ class HomeScreen extends StatelessWidget {
 
         // A column widget that contains the widgets for a fitness app home screen
         body: DefaultTabController(
-          length: 3,
-          initialIndex: 2,
+          length: 2,
+          initialIndex: 1,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

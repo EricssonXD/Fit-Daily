@@ -45,7 +45,7 @@ class StepStatsBarchartTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TabBarView(
       children: [
-        _TodayTab(),
+        // _TodayTab(),
         _WeekTab(),
         _MonthTab(),
       ],
@@ -230,10 +230,6 @@ class _TodayTab extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final steps = useState(-1);
     useOnStreamChange(
-      // IsarManager.isar.stepsDatas
-      //     .where()
-      //     .sortByDateDesc()
-      //     .watch(limit: 1, fireImmediately: true),
       IsarManager.isar.stepsDatas
           .where()
           .idEqualTo(StepsIsarManager.getTodayId)
@@ -243,15 +239,13 @@ class _TodayTab extends HookConsumerWidget {
         if (snapshot != null) steps.value = snapshot.stepsTaken;
       },
     );
-
+    // step = ref.watch(stepsStatsTodayProvider);
     return Text((steps.value).toString());
   }
 }
 
 class _StatsTabBar extends StatelessWidget {
-  const _StatsTabBar(
-      // required this.tabController,
-      );
+  const _StatsTabBar();
 
   // final TabController tabController;
 
@@ -289,9 +283,9 @@ class _StatsTabBar extends StatelessWidget {
             // indicatorColor: Colors.white,
             // labelColor: Colors.white,
             tabs: [
-              Tab(
-                text: "Today",
-              ),
+              // Tab(
+              //   text: "Today",
+              // ),
               Tab(
                 text: "Week",
               ),
@@ -315,6 +309,7 @@ int _maxSteps(List<StepsData> data) {
 }
 
 int _averageSteps(List<StepsData> data) {
+  if (data.isEmpty) return 0;
   return data.fold<int>(0, (previousValue, element) {
         return previousValue + element.stepsTaken;
       }) ~/

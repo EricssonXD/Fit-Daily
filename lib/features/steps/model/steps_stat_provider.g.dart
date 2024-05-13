@@ -6,7 +6,7 @@ part of 'steps_stat_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$stepsStatsTodayHash() => r'bebd6f7727abd467b0c4512a52c563086f443fe9';
+String _$stepsStatsTodayHash() => r'fbcab7944279b7314e60eeb618c0a82093205a5d';
 
 /// See also [StepsStatsToday].
 @ProviderFor(StepsStatsToday)
@@ -38,7 +38,7 @@ final stepsStatsWeekProvider =
 );
 
 typedef _$StepsStatsWeek = Notifier<List<StepsData>>;
-String _$stepsStatsMonthHash() => r'b2058d985f52e789dd88426c226cb15ae2a6374d';
+String _$stepsStatsMonthHash() => r'db75a2fe173147a2e54fb4349653ba7c69d9a42c';
 
 /// See also [StepsStatsMonth].
 @ProviderFor(StepsStatsMonth)
